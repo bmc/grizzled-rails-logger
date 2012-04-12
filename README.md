@@ -30,7 +30,7 @@ Becaue *Grizzled Rails Logger* merely adds to the standard Rails logger,
 you can continue to all the usual capabilities of the Rails logger (such as,
 for instance, tagged logged).
 
-To Configure *Grizzled Rails Logger*, add a section like the following to your
+To configure *Grizzled Rails Logger*, add a section like the following to your
 `config/application.rb` file or your individual environment file:
 
     Grizzled::Rails::Logger.configure do |cfg|
@@ -77,7 +77,7 @@ You'd simply reconfigure those values, as shown below:
 
 `Term::ANSIColor` is automatically included for you.
 
-**WARNING** *Grizzled Rails Logger* does not verify that the values you
+**WARNING:** *Grizzled Rails Logger* does not verify that the values you
 store in the color settings are legal ANSI sequences. The following is
 perfectly legal, though probably not what you want:
 
