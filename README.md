@@ -141,7 +141,7 @@ If you prefer *not* to flatten log messages, disable the `flatten` setting:
 
 Two settings control formatting.
 
-#### `format`
+#### Message format
 
 The `format` setting controls overall message formatting. Four escape
 sequences control how the message is assembled:
@@ -170,7 +170,7 @@ For example, to change the log format to omit the PID, use:
     end
 
 
-#### `timeformat`
+#### Time format
 
 The `timeformat` setting controls how the current time (see "%T", above) is
 formatted. `timeformat` is a [strftime][] format string.
