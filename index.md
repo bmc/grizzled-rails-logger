@@ -40,6 +40,12 @@ To configure *Grizzled Rails Logger*, add a section like the following to your
       # Configuration data goes here
     end
 
+If you configure it in `application.rb`, you don't need to `require` the
+module. If you configure it in your `config/environments/whatever.rb` file,
+however, you'll also need the appropriate `require` statement at the top:
+
+    require 'grizzled/rails/logger'
+
 The default configuration is equivalent to the following:
 
     Grizzled::Rails::Logger.configure do |cfg|
