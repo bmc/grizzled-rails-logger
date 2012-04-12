@@ -93,7 +93,7 @@ task :pubchangelog do |t|
   File.open(File.join(GH_PAGES_DIR, 'CHANGELOG.md'), 'w') do |f|
     f.write <<EOF
 ---
-title: Change Log for Grizzled Ruby
+title: Change Log for Grizzled Rails Logger
 layout: default
 ---
 
