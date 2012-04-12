@@ -141,18 +141,18 @@ If you prefer *not* to flatten log messages, disable the `flatten` setting:
 
 Two settings control formatting.
 
-`format`
+#### `format`
 
 The `format` setting controls overall message formatting. Four escape
 sequences control how the message is assembled:
 
-* "%T" - Any "%T" sequences in the format are replaced by the current time.
+* `%T` - Any "%T" sequences in the format are replaced by the current time.
   The format of the time is controlled by `timeformat` (see below).
-* "%P" - Any "%P" sequences are replaced with the process ID of the Rails
+* `%P` - Any "%P" sequences are replaced with the process ID of the Rails
   instance that's emitting the message.
-* "%S" - Any "%S" sequences are replaced with an upper case string
+* `%S` - Any "%S" sequences are replaced with an upper case string
   representation of the message's severity (e.g., "ERROR", "WARN").
-* "%M" - Any "%M" sequences are replaced by the message, including any
+* `%M` - Any "%M" sequences are replaced by the message, including any
   tags inserted via tagged logging.
 
 Any other characters, including blanks, are emitted verbatim.
@@ -170,7 +170,7 @@ For example, to change the log format to omit the PID, use:
     end
 
 
-`timeformat`
+#### `timeformat`
 
 The `timeformat` setting controls how the current time (see "%T", above) is
 formatted. `timeformat` is a [strftime][] format string.
