@@ -14,7 +14,7 @@ capabilities, including:
   each message occupies only one line.
 * An `exception` message that dumps an exception backtrace to the log
 
-## Installation for Rails 3
+# Installation for Rails 3
 
 Add the following to your `Gemfile`, and run `bundle install`:
 
@@ -24,7 +24,7 @@ If you want the development version of the gem, use:
 
     gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
 
-## Configuration
+# Configuration
 
 Becaue *Grizzled Rails Logger* merely adds to the standard Rails logger,
 you can continue to all the usual capabilities of the Rails logger (such as,
@@ -54,7 +54,7 @@ The default configuration is equivalent to the following:
 
 Each configuration option is described in more detail, below.
 
-### Colorization
+## Colorization
 
 By default, *Grizzled Rails Logger* colorizes logging output, using ANSI
 terminal escape sequences (as defined by the [term-ansicolor][] gem).
@@ -93,7 +93,7 @@ will, instead, look like this:
 
     red[2012/04/12 14:43:22] (DEBUG) 9816 My debug message
 
-### Exception logging
+## Exception logging
 
 *Grizzled Rails Logger* adds an `exception()` method, providing an easy way
 to dump a rescued exception and its backtrace:
@@ -116,7 +116,7 @@ The exception is dumped at severity level ERROR.
 Regardless of the setting of `flatten` (see below), the exception's backtrace
 is always displayed on multiple lines.
 
-### Flattening
+## Flattening
 
 The default Rails logger includes lots of newlines in its log messages. For
 example:
@@ -137,11 +137,11 @@ If you prefer *not* to flatten log messages, disable the `flatten` setting:
 
 **NOTE:** Exception backtraces are *never* flattened.
 
-### Formatting
+## Formatting
 
 Two settings control formatting.
 
-#### Message format
+### Message format
 
 The `format` setting controls overall message formatting. Four escape
 sequences control how the message is assembled:
@@ -170,14 +170,14 @@ For example, to change the log format to omit the PID, use:
     end
 
 
-#### Time format
+### Time format
 
 The `timeformat` setting controls how the current time (see "%T", above) is
 formatted. `timeformat` is a [strftime][] format string.
 
 The default time format is: `%Y/%m/%d %H:%M:%S`
 
-## Alternatives
+# Alternatives
 
 Alternatives to this gem include:
 
