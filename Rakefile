@@ -86,7 +86,7 @@ task :pubrdoc => :doc do |t|
 end
 
 desc "Synonym for 'pubchangelog'"
-task :changelog
+task :changelog => :pubchangelog
 
 desc "Publish the change log. Not really of use to anyone but the author"
 task :pubchangelog do |t|
