@@ -34,7 +34,8 @@ you can continue to all the usual capabilities of the Rails logger (such as,
 for instance, tagged logged).
 
 To configure *Grizzled Rails Logger*, add a section like the following to your
-`config/application.rb` file or your individual environment file:
+`config/application.rb` file, an individual environment file, or an initializer
+(e.g., `config/initializers/logging.rb`):
 
     Grizzled::Rails::Logger.configure do |cfg|
       # Configuration data goes here
@@ -50,6 +51,9 @@ The default configuration is equivalent to the following:
 
     Grizzled::Rails::Logger.configure do |cfg|
       cfg.flatten = true
+      cfg.flatten_patterns = [
+        /.*/
+      ]
       cfg.format = '%[T] (%S) %P %M'
       cfg.timeformat = '%Y/%m/%d %H:%M:%S'
       cfg.colorize = true
@@ -144,7 +148,24 @@ If you prefer *not* to flatten log messages, disable the `flatten` setting:
       cfg.flatten = false
     end
 
-**NOTE:** Exception backtraces are *never* flattened.
+You can also flatten just some of the messages, by specifying flattening
+patterns. The default set of flattening patterns flattens all messages with
+embedded newlines. However, this strategy can be problematic, in that it'll
+also flatten EXPLAIN PLAN output and some exceptions. To control which
+messages are flattened, define an array of regular expressions, matched
+against each message as if it were already flattened. (That is, the regexps
+do _not_ need to take newlines into account.) For example:
+
+    Grizzled::Rails::Logger.configure do |cfg|
+      cfg.flatten = false
+      cfg.flatten_patterns = [
+        /.*Started GET /,
+        /.*Started POST /
+      ]
+    end
+
+**NOTE: Exception backtraces emitted via `logger.exception()` are *never*
+**flattened.
 
 ## Formatting
 

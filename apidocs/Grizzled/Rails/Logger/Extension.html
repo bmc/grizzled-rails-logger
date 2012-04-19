@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: Grizzled::Rails::Logger::Extension</title>
+
+  <link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="module">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../../index.html">Home</a>
+          <a href="../../../index.html#classes">Classes</a>
+          <a href="../../../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../../../lib/grizzled/rails/logger_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/grizzled/rails/logger.rb">lib/grizzled/rails/logger.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-included">::included</a></li>
+          
+          <li><a href="#method-i-add_with_grizzling">#add_with_grizzling</a></li>
+          
+          <li><a href="#method-i-exception">#exception</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../../../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../../../Grizzled.html">Grizzled</a></li>
+        
+          <li><a href="../../../Grizzled/Rails.html">Grizzled::Rails</a></li>
+        
+          <li><a href="../../../Grizzled/Rails/Logger.html">Grizzled::Rails::Logger</a></li>
+        
+          <li><a href="../../../Grizzled/Rails/Logger/Extension.html">Grizzled::Rails::Logger::Extension</a></li>
+        
+          <li><a href="../../../Grizzled/Rails/Logger/Railtie.html">Grizzled::Rails::Logger::Railtie</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="module">Grizzled::Rails::Logger::Extension</h1>
+
+    <div id="description" class="description">
+      
+<p>The actual logging extension sits in here.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="DEBUG">DEBUG</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="ERROR">ERROR</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="FATAL">FATAL</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="INFO">INFO</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="SEVERITIES">SEVERITIES</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="SEVERITY_MAP">SEVERITY_MAP</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="Severity">Severity</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="WARN">WARN</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="included-method" class="method-detail ">
+          <a name="method-c-included"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">included</span><span
+              class="method-args">(base)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="included-source">
+<pre>
+<span class="ruby-comment"># File lib/grizzled/rails/logger.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">alias_method_chain</span> <span class="ruby-value">:add</span>, <span class="ruby-value">:grizzling</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- included-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- included-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="add_with_grizzling-method" class="method-detail ">
+          <a name="method-i-add_with_grizzling"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">add_with_grizzling</span><span
+              class="method-args">(severity, message = nil, progname = nil, &block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="add_with_grizzling-source">
+<pre>
+<span class="ruby-comment"># File lib/grizzled/rails/logger.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_with_grizzling</span>(<span class="ruby-identifier">severity</span>, <span class="ruby-identifier">message</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">progname</span> = <span class="ruby-keyword">nil</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">do_add</span>(<span class="ruby-identifier">severity</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">progname</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- add_with_grizzling-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- add_with_grizzling-method -->
+
+      
+        <div id="exception-method" class="method-detail ">
+          <a name="method-i-exception"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">exception</span><span
+              class="method-args">(message, ex, progname = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="exception-source">
+<pre>
+<span class="ruby-comment"># File lib/grizzled/rails/logger.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exception</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">ex</span>, <span class="ruby-identifier">progname</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">ex_message</span> = <span class="ruby-node">&quot;#{ex.class} (backtrace):\n#{ex.backtrace.join(&quot;\n&quot;)}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">message</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;#{ex_message}&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">message</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;\n#{ex_message}&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">do_add</span>(<span class="ruby-constant">ERROR</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">progname</span>, <span class="ruby-value">:flatten</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- exception-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- exception-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
