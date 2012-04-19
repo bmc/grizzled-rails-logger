@@ -17,15 +17,18 @@ module Grizzled # :nodoc:
 
       # Configuration constants
       Configuration = OpenStruct.new(
-          :flatten    => true,
-          :format     => '[%T] (%S) %P %M',
-          :timeformat => '%Y/%m/%d %H:%M:%S',
-          :colorize   => true,
-          :colors     => {
-            :debug => Term::ANSIColor.cyan,
-            :warn  => Term::ANSIColor.yellow + Term::ANSIColor.bold,
-            :fatal => Term::ANSIColor.red + Term::ANSIColor.bold,
-            :error => Term::ANSIColor.red
+          flatten:          true,
+          flatten_patterns: [
+            /.*/
+          ],
+          format:           '[%T] (%S) %P %M',
+          timeformat:       '%Y/%m/%d %H:%M:%S',
+          colorize:         true,
+          colors: {
+            debug: Term::ANSIColor.cyan,
+            warn:  Term::ANSIColor.yellow + Term::ANSIColor.bold,
+            fatal: Term::ANSIColor.red + Term::ANSIColor.bold,
+            error: Term::ANSIColor.red
           }
       )
 
@@ -97,7 +100,20 @@ module Grizzled # :nodoc:
           end
 
           flatten = options.fetch(:flatten, Configuration.flatten)
-          message.gsub!("\n", '') if flatten
+          if flatten
+            patterns = options.fetch(
+              :flatten_patterns, Configuration.flatten_patterns
+            )
+            patterns = ['.*'] if patterns.nil? || (patterns.length == 0)
+            flattened_message = message.gsub("\n", '')
+            patterns.each do |pattern|
+              if pattern =~ flattened_message
+                message = flattened_message
+                break
+              end
+            end
+          end
+
           time = Time.now.strftime(Configuration.timeformat)
           pid = $$.to_s
           sev = SEVERITIES[severity].to_s
