@@ -71,7 +71,11 @@ module Grizzled # :nodoc:
         end
 
         def exception(message, ex, progname = nil)
-          ex_message = "#{ex.class} (backtrace):\n#{ex.backtrace.join("\n")}"
+          ex_message = <<-EOM
+#{ex.class}: #{ex.message}
+Backtrace:
+#{ex.backtrace.join("\n")}
+          EOM
           if message.nil? || (message.length == 0)
             message = "#{ex_message}"
           else
