@@ -12,7 +12,7 @@ capabilities, including:
 * The ability to include the PID in each message.
 * The ability to flatten the log output, removing spurious newlines, so that
   each message occupies only one line.
-* An `exception` message that dumps an exception backtrace to the log
+* An`exception` message that dumps an exception backtrace to the log
 
 # Installation for Rails 3
 
@@ -23,6 +23,11 @@ Add the following to your `Gemfile`, and run `bundle install`:
 If you want the development version of the gem, use:
 
     gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
+
+# Caveats
+
+This gem currently only works with Ruby 1.9. If there's a big enough hue and
+cry, I'll patch it to work with Ruby 1.8.7, but I'd rather not.
 
 # Documentation
 
