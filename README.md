@@ -24,10 +24,8 @@ If you want the development version of the gem, use:
 
     gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
 
-# Caveats
-
-This gem currently only works with Ruby 1.9. If there's a big enough hue and
-cry, I'll patch it to work with Ruby 1.8.7, but I'd rather not.
+This gem is specific to Rails 3, but it should work fine with either
+Ruby 1.9 or Ruby 1.8.7.
 
 # Documentation
 
