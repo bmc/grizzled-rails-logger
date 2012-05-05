@@ -17,18 +17,18 @@ module Grizzled # :nodoc:
 
       # Configuration constants
       Configuration = OpenStruct.new(
-          flatten:          true,
-          flatten_patterns: [
+          :format           => '[%T] (%S) %P %M',
+          :timeformat       => '%Y/%m/%d %H:%M:%S',
+          :colorize         => true,
+          :flatten          => true,
+          :flatten_patterns => [
             /.*/
           ],
-          format:           '[%T] (%S) %P %M',
-          timeformat:       '%Y/%m/%d %H:%M:%S',
-          colorize:         true,
-          colors: {
-            debug: Term::ANSIColor.cyan,
-            warn:  Term::ANSIColor.yellow + Term::ANSIColor.bold,
-            fatal: Term::ANSIColor.red + Term::ANSIColor.bold,
-            error: Term::ANSIColor.red
+          :colors => {
+            :debug => Term::ANSIColor.cyan,
+            :warn  => Term::ANSIColor.yellow + Term::ANSIColor.bold,
+            :fatal => Term::ANSIColor.red + Term::ANSIColor.bold,
+            :error => Term::ANSIColor.red
           }
       )
 
