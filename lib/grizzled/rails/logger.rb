@@ -89,7 +89,7 @@ Backtrace:
           do_add(severity, message, progname, &block)
         end
 
-        private
+      private
 
         def do_add(severity, message, progname, options = {}, &block)
           return if @level > severity
@@ -109,7 +109,7 @@ Backtrace:
               :flatten_patterns, Configuration.flatten_patterns
             )
             patterns = ['.*'] if patterns.nil? || (patterns.length == 0)
-            flattened_message = message.gsub("\n", '')
+            flattened_message = message.to_s.gsub("\n", '')
             patterns.each do |pattern|
               if pattern =~ flattened_message
                 message = flattened_message
