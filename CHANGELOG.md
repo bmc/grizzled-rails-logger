@@ -5,6 +5,17 @@ layout: default
 
 # Change Log
 
+Version 0.1.4
+
+Before attempting to use (and `gsub` against) the passed-in message, the
+logging extension now explicitly converts it to a string. This bug fix is an
+attempt to address [Issue #2][issue2] (which I have been unable to reproduce
+yet.)
+
+[issue2]: https://github.com/bmc/grizzled-rails-logger/issues/2
+
+---
+
 Version 0.1.3
 
 Now works with Ruby 1.8.7, as well as Ruby 1.9. Addresses [Issue 1][issue1].
