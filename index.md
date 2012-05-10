@@ -28,7 +28,7 @@ gem 'grizzled-rails-logger'
 If you want the development version of the gem, use:
 
 {% highlight ruby %}
-    gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
+gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
 {% endhighlight %}
 
 This gem is specific to Rails 3, but it should work fine with either
@@ -45,9 +45,9 @@ To configure *Grizzled Rails Logger*, add a section like the following to your
 (e.g., `config/initializers/logging.rb`):
 
 {% highlight ruby %}
-    Grizzled::Rails::Logger.configure do |cfg|
-      # Configuration data goes here
-    end
+Grizzled::Rails::Logger.configure do |cfg|
+  # Configuration data goes here
+end
 {% endhighlight %}
 
 If you configure it in `application.rb`, you don't need to `require` the
