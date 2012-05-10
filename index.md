@@ -209,11 +209,11 @@ The default format is: `[%T] (%S) %P %M`.
 
 For example, to change the log format to omit the PID, use:
 
-```ruby
+{% highlight ruby %}
 Grizzled::Rails::Logger.configure do |cfg|
   cfg.format = '[%T] (%S) %M'
 end
-```
+{% endhighlight %}
 
 ### Time format
 
