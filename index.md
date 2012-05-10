@@ -21,13 +21,15 @@ capabilities, including:
 
 Add the following to your `Gemfile`, and run `bundle install`:
 
-{:lang='ruby'}
-    gem 'grizzled-rails-logger'
+{% highlight ruby %
+gem 'grizzled-rails-logger'
+{% endhighlight %}
 
 If you want the development version of the gem, use:
 
-{:lang='ruby'}
-    gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
+{% highlight ruby %}
+gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
+{% endhighlight %}
 
 This gem is specific to Rails 3, but it should work fine with either
 Ruby 1.9 or Ruby 1.8.7.
@@ -42,10 +44,11 @@ To configure *Grizzled Rails Logger*, add a section like the following to your
 `config/application.rb` file, an individual environment file, or an initializer
 (e.g., `config/initializers/logging.rb`):
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      # Configuration data goes here
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  # Configuration data goes here
+end
+{% endhighlight %}
 
 If you configure it in `application.rb`, you don't need to `require` the
 module. If you configure it in your `config/environments/whatever.rb` file,
@@ -55,22 +58,23 @@ however, you'll also need the appropriate `require` statement at the top:
 
 The default configuration is equivalent to the following:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.flatten = true
-      cfg.flatten_patterns = [
-        /.*/
-      ]
-      cfg.format = '%[T] (%S) %P %M'
-      cfg.timeformat = '%Y/%m/%d %H:%M:%S'
-      cfg.colorize = true
-      cfg.colors = {
-        :debug => Term::ANSIColor.cyan,
-        :warn  => Term::ANSIColor.yellow + Term::ANSIColor.bold,
-        :fatal => Term::ANSIColor.red + Term::ANSIColor.bold,
-        :error => Term::ANSIColor.red
-      }
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.flatten = true
+  cfg.flatten_patterns = [
+    /.*/
+  ]
+  cfg.format = '%[T] (%S) %P %M'
+  cfg.timeformat = '%Y/%m/%d %H:%M:%S'
+  cfg.colorize = true
+  cfg.colors = {
+    :debug => Term::ANSIColor.cyan,
+    :warn  => Term::ANSIColor.yellow + Term::ANSIColor.bold,
+    :fatal => Term::ANSIColor.red + Term::ANSIColor.bold,
+    :error => Term::ANSIColor.red
+  }
+end
+{% endhighlight %}
 
 Each configuration option is described in more detail, below.
 
@@ -81,21 +85,23 @@ terminal escape sequences (as defined by the [term-ansicolor][] gem).
 
 You can disable colorization by setting the `colorize` option to `false`:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.colorize = false
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.colorize = false
+end
+{% endhighlight %}
 
 You can also change the colors associated with each severity. Suppose, for
 instance, that you want INFO messages (which normally aren't colorized) to be
 white, and you wanted DEBUG messages (which are normally cyan) to be bold blue.
 You'd simply reconfigure those values, as shown below:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.colors[:debug] = Term::ANSIColor.bold + Term::ANSIColor.blue
-      cfg.colors[:info] = Term::ANSIColor.white
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.colors[:debug] = Term::ANSIColor.bold + Term::ANSIColor.blue
+  cfg.colors[:info] = Term::ANSIColor.white
+end
+{% endhighlight %}
 
 `Term::ANSIColor` is automatically included for you.
 
@@ -103,10 +109,11 @@ You'd simply reconfigure those values, as shown below:
 store in the color settings are legal ANSI sequences. The following is
 perfectly legal, though probably not what you want:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.colors[:debug] = "red"
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.colors[:debug] = "red"
+end
+{% endhighlight %}
 
 With that setting, a debug message that normally looks like this:
 
@@ -123,12 +130,13 @@ will, instead, look like this:
 *Grizzled Rails Logger* adds an `exception()` method, providing an easy way
 to dump a rescued exception and its backtrace:
 
-{:lang='ruby'}
-    begin
-      # Some dangerous operation
-    rescue Exception => ex
-      logger.exception("Error while doing dangerous thing", ex)
-    end
+{% highlight ruby %}
+begin
+  # Some dangerous operation
+rescue Exception => ex
+  logger.exception("Error while doing dangerous thing", ex)
+end
+{% endhighlight %}
 
 The method takes three parameters, one of which is optional:
 
@@ -157,10 +165,11 @@ example:
 
 If you prefer *not* to flatten log messages, disable the `flatten` setting:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.flatten = false
-    end
+{% highlight ruby %}
+ Grizzled::Rails::Logger.configure do |cfg|
+  cfg.flatten = false
+end
+{% endhighlight %}
 
 You can also flatten just some of the messages, by specifying flattening
 patterns. The default set of flattening patterns flattens all messages with
@@ -170,14 +179,15 @@ messages are flattened, define an array of regular expressions, matched
 against each message as if it were already flattened. (That is, the regexps
 do _not_ need to take newlines into account.) For example:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.flatten = false
-      cfg.flatten_patterns = [
-        /.*Started GET /,
-        /.*Started POST /
-      ]
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.flatten = false
+  cfg.flatten_patterns = [
+    /.*Started GET /,
+    /.*Started POST /
+  ]
+end
+{% endhighlight %}
 
 **NOTE: Exception backtraces emitted via `logger.exception()` are *never* flattened.**
 
@@ -223,10 +233,11 @@ formatted. `timeformat` is a [strftime][] format string.
 The default time format is: `%Y/%m/%d %H:%M:%S`. If you only want to log
 the time (not the date), you can change it easily, in an intializer block:
 
-{:lang='ruby'}
-    Grizzled::Rails::Logger.configure do |cfg|
-      cfg.format = '%H:%M:%S'
-    end
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.format = '%H:%M:%S'
+end
+{% endhighlight %}
 
 # Change log
 
