@@ -1,7 +1,6 @@
-pygments: true
+pygments: false
 markdown: kramdown
-
-kramdown:
+ramdown:
   use_coderay: true
   coderay:
     coderay_tab_width: 2
