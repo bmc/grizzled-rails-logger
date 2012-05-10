@@ -22,7 +22,7 @@ capabilities, including:
 Add the following to your `Gemfile`, and run `bundle install`:
 
 {% highlight ruby %}
-    gem 'grizzled-rails-logger'
+gem 'grizzled-rails-logger'
 {% endhighlight %}
 
 If you want the development version of the gem, use:
