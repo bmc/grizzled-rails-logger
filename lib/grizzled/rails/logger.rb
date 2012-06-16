@@ -17,12 +17,14 @@ module Grizzled # :nodoc:
 
       # Configuration constants
       Configuration = OpenStruct.new(
-          :format           => '[%T] (%S) %P %M',
-          :timeformat       => '%Y/%m/%d %H:%M:%S',
-          :colorize         => true,
-          :flatten          => true,
-          :flatten_patterns => [
+          :format                => '[%T] (%S) %P %M',
+          :timeformat            => '%Y/%m/%d %H:%M:%S',
+          :colorize              => true,
+          :flatten               => true,
+          :flatten_patterns      => [
             /.*/
+          ],
+          :dont_flatten_patterns => [
           ],
           :colors => {
             :debug => Term::ANSIColor.cyan,
@@ -92,11 +94,19 @@ Backtrace:
       private
 
         def do_add(severity, message, progname, options = {}, &block)
-          return if @level > severity
+          if self.respond_to? :level
+            lvl = level
+          elsif defined? @level
+            lvl = @level
+          else
+            raise "Can't determine logging level."
+          end
+
+          return if lvl > severity
 
           if message.nil?
             if block_given?
-              if severity < @level
+              if severity < lvl
                 return true
               end
               message = yield
@@ -105,17 +115,35 @@ Backtrace:
 
           flatten = options.fetch(:flatten, Configuration.flatten)
           if flatten
-            patterns = options.fetch(
+            flatten_patterns = options.fetch(
               :flatten_patterns, Configuration.flatten_patterns
             )
-            patterns = ['.*'] if patterns.nil? || (patterns.length == 0)
+            dont_flatten_patterns = options.fetch(
+              :dont_flatten_patterns, Configuration.dont_flatten_patterns
+            )
+            if flatten_patterns.nil? || (flatten_patterns.length == 0)
+              flatten_patterns = ['.*']
+            end
+            flatten = false
             flattened_message = message.to_s.gsub("\n", '')
-            patterns.each do |pattern|
+
+            # Flatten the message if it matches the specified pattern...
+            flatten_patterns.each do |pattern|
               if pattern =~ flattened_message
-                message = flattened_message
+                flatten = true
                 break
               end
             end
+
+            # ... unless it's also matches a "don't flatten" pattern.
+            dont_flatten_patterns.each do |pattern|
+              if pattern =~ flattened_message
+                flatten = false
+                break
+              end
+            end
+
+            message = flattened_message if flatten
           end
 
           time = Time.now.strftime(Configuration.timeformat)
