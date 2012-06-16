@@ -1,9 +1,16 @@
----
-title: Change Log for Grizzled Rails Logger
-layout: default
----
-
 # Change Log
+
+Version 0.1.5
+
+- Changed to work with Rails 3.2.6, while retaining backward compatibility
+  with prior versions. Addresses [Issue #5][].
+- Added a `dont_flatten_patterns` configuration item. See the
+  [documentation](http://software.clapper.org/grizzled-rails-logger/) for
+  details.
+
+[Issue #5]: https://github.com/bmc/grizzled-rails-logger/issues/5
+
+---
 
 Version 0.1.4
 

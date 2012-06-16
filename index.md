@@ -65,7 +65,9 @@ Grizzled::Rails::Logger.configure do |cfg|
   cfg.flatten = true
   cfg.flatten_patterns = [
     /.*/
-  ]
+  ],
+  cfg.dont_flatten_patterns = [
+  ],
   cfg.format = '[%T] (%S) %P %M'
   cfg.timeformat = '%Y/%m/%d %H:%M:%S'
   cfg.colorize = true
@@ -173,20 +175,36 @@ If you prefer *not* to flatten log messages, disable the `flatten` setting:
 end
 {% endhighlight %}
 
-You can also flatten just some of the messages, by specifying flattening
-patterns. The default set of flattening patterns flattens all messages with
-embedded newlines. However, this strategy can be problematic, in that it'll
-also flatten EXPLAIN PLAN output and some exceptions. To control which
-messages are flattened, define an array of regular expressions, matched
-against each message as if it were already flattened. (That is, the regexps
-do _not_ need to take newlines into account.) For example:
+You can also flatten just some of the messages, by specifying a combination of
+flattening patterns and "don't flatten" patterns. The default set of flattening
+patterns flattens all messages with embedded newlines. However, this strategy
+can be problematic, in that it'll also flatten EXPLAIN PLAN output and some
+exceptions. To control which messages are flattened, define an array of regular
+expressions, matched against each message as if it were already flattened.
+(That is, the regexps do _not_ need to take newlines into account.) For
+example:
 
 {% highlight ruby %}
 Grizzled::Rails::Logger.configure do |cfg|
-  cfg.flatten = false
   cfg.flatten_patterns = [
     /.*Started GET /,
     /.*Started POST /
+  ]
+end
+{% endhighlight %}
+
+You can exert even more control by defining "don't flatten" patterns, which
+take higher priority than "flatten" patterns. For instance, the following
+configuration flattens every message *except* those with the words
+"EXPLAIN PLAN" in them.
+
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.flatten_patterns = [
+    /.*/,
+  ]
+  cfg.dont_flatten_patterns = [
+    /\bEXPLAIN\s+PLAN\b/
   ]
 end
 {% endhighlight %}
