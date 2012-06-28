@@ -22,7 +22,7 @@ Add the following to your `Gemfile`, and run `bundle install`:
 
 If you want the development version of the gem, use:
 
-    gem 'grizzled-rails-logger', :git => 'git://github.com/bmc/grizzled-rails-logger.git'
+    gem 'grizzled-rails-logger', github: 'bmc/grizzled'
 
 This gem is specific to Rails 3, but it should work fine with either
 Ruby 1.9 or Ruby 1.8.7.
