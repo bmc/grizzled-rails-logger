@@ -227,7 +227,7 @@ sequences control how the message is assembled:
 * `%S` - Any "%S" sequences are replaced with an upper case string
   representation of the message's severity (e.g., "ERROR", "WARN").
 * `%M` - Any "%M" sequences are replaced by the message, including any
-  tags inserted via tagged logging.
+  tags inserted via tagged logging. (See below.)
 
 Any other characters, including blanks, are emitted verbatim.
 
@@ -259,6 +259,27 @@ Grizzled::Rails::Logger.configure do |cfg|
 end
 {% endhighlight %}
 
+## Additional Fields and Rails Tagged Logging
+
+_Grizzled Rails Logger_ works in tandem with Rails 3.2 [Tagged Logging][], so
+you can also mix log tags into your log output. For instance, suppose you want
+to capture the user name, session ID, and remote IP address for the request
+that's active when a message is logged. _Grizzled Rails Logger_ doesn't support
+escapes for those values, but you can use tagged logging to get them into your
+log messages. Make sure your environment initialization file contains lines
+such as the following:
+
+    MyApp::Application.configure do
+      config.log_tags = [
+        :remote_ip,
+        proc { |req| req.session[:id] || "no session },
+        proc { |req| req.session[:user_name] || "anonymous" }
+      ]
+    end
+
+_Grizzled Rails Logger_ will format the actual log message, and hand it off
+to the underlying Rails logger, which will add the log tags to it.
+
 # Change log
 
 The change log for this software is [here](CHANGELOG.html) and in the
@@ -282,3 +303,4 @@ under a [BSD license][].
 [itslog]: https://github.com/johnnytommy/itslog
 [term-ansicolor]: https://github.com/flori/term-ansicolor
 [strftime]: http://strftime.net/
+[Tagged Logging]: http://guides.rubyonrails.org/3_2_release_notes.html#tagged-logging
