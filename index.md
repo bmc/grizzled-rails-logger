@@ -269,13 +269,15 @@ escapes for those values, but you can use tagged logging to get them into your
 log messages. Make sure your environment initialization file contains lines
 such as the following:
 
-    MyApp::Application.configure do
-      config.log_tags = [
-        :remote_ip,
-        proc { |req| req.session[:id] || "no session },
-        proc { |req| req.session[:user_name] || "anonymous" }
-      ]
-    end
+{% highlight ruby %}
+MyApp::Application.configure do
+  config.log_tags = [
+    :remote_ip,
+    proc { |req| req.session[:id] || "no session },
+    proc { |req| req.session[:user_name] || "anonymous" }
+  ]
+end
+{% endhighlight %}
 
 _Grizzled Rails Logger_ will format the actual log message, and hand it off
 to the underlying Rails logger, which will add the log tags to it.
