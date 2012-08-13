@@ -65,9 +65,9 @@ Grizzled::Rails::Logger.configure do |cfg|
   cfg.flatten = true
   cfg.flatten_patterns = [
     /.*/
-  ],
+  ]
   cfg.dont_flatten_patterns = [
-  ],
+  ]
   cfg.format = '[%T] (%S) %P %M'
   cfg.timeformat = '%Y/%m/%d %H:%M:%S'
   cfg.colorize = true
