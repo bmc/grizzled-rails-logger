@@ -1,6 +1,6 @@
 # Change Log
 
-Version 0.1.5
+Version 0.1.5 (16 June, 2012)
 
 - Changed to work with Rails 3.2.6, while retaining backward compatibility
   with prior versions. Addresses [Issue #5][].
@@ -12,7 +12,7 @@ Version 0.1.5
 
 ---
 
-Version 0.1.4
+Version 0.1.4 (9 May, 2012)
 
 Before attempting to use (and `gsub` against) the passed-in message, the
 logging extension now explicitly converts it to a string. This bug fix is an
@@ -23,7 +23,7 @@ yet.)
 
 ---
 
-Version 0.1.3
+Version 0.1.3 (5 May, 2012)
 
 Now works with Ruby 1.8.7, as well as Ruby 1.9. Addresses [Issue 1][issue1].
 (Still requires Rails 3, however.)
@@ -32,18 +32,18 @@ Now works with Ruby 1.8.7, as well as Ruby 1.9. Addresses [Issue 1][issue1].
 
 ---
 
-Version 0.1.2
+Version 0.1.2 (21 April, 2012)
 
 Backtrace dump now includes message that's in the exception.
 
 ---
 
-Version 0.1.1
+Version 0.1.1 (19 April, 2012)
 
 Added `flatten_patterns` to the configuration options.
 
 ---
 
-Version 0.1.0
+Version 0.1.0 (12 April, 2012)
 
 * Initial version.
