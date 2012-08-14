@@ -284,8 +284,7 @@ to the underlying Rails logger, which will add the log tags to it.
 
 # Change log
 
-The change log for this software is [here](CHANGELOG.html) and in the
-[GitHub repo][].
+The change log for this software is [here](https://github.com/bmc/grizzled-rails-logger/blob/master/CHANGELOG.md).
 
 # Alternatives
 
