@@ -326,10 +326,7 @@ The change log for this software is [here](https://github.com/bmc/grizzled-rails
 
 # Alternatives
 
-Alternatives to this gem include:
-
-* Paul Dowman's [better_logging][] gem
-* [itslog][]
+Alternatives to this gem include Paul Dowman's [better_logging][] gem
 
 # License
 
