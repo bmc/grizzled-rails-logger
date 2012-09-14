@@ -227,7 +227,7 @@ Grizzled::Rails::Logger.configure do |cfg|
 end
 {% endhighlight %}
 
-### Exceptions
+### Unflattening Exceptions
 
 Exception backtraces emitted via `logger.exception()` are *never* flattened.
 
