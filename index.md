@@ -320,6 +320,25 @@ end
 _Grizzled Rails Logger_ will format the actual log message, and hand it off
 to the underlying Rails logger, which will add the log tags to it.
 
+# Restrictions
+
+Because it uses the [term-ansicolor][] gem, _Grizzled Rails Logger_ effectively
+reserves the name `Term`, preventing you from using it. There are at least
+two known consequences of this:
+
+First, if you have an existing Rails model called `Term`, you will not be able
+to use this gem unless you rename the model.
+
+Second, if you use this gem and later attempt to create a model called `Term`,
+you'll get the following error:
+
+    $ rails g model term name:string   
+          invoke  active_record
+    The name 'Term' is either already used in your application or reserved by
+    Ruby on Rails. Please choose an alternative and run this generator again.
+
+Currently, there's no workaround for this issue.
+
 # Change log
 
 The change log for this software is [here](https://github.com/bmc/grizzled-rails-logger/blob/master/CHANGELOG.md).
