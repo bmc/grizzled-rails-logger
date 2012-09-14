@@ -50,9 +50,15 @@ Grizzled::Rails::Logger.configure do |cfg|
 end
 {% endhighlight %}
 
-If you configure it in `application.rb`, you don't need to `require` the
-module. If you configure it in your `config/environments/whatever.rb` file,
-however, you'll also need the appropriate `require` statement at the top:
+Note that this section stands by itself; it doesn't go inside your
+`class Application < Rails::Application` configuration block. For
+simplicity and ease of maintenance, I recommend using a separate
+initializer file, like `config/initializers/logging.rb`.
+
+If you configure it in `application.rb` or in an initializer file, you don't
+need to `require` the module. If you configure it in your
+`config/environments/whatever.rb` file, however, you'll also need the
+appropriate `require` statement at the top:
 
 {% highlight ruby %}
 require 'grizzled/rails/logger'
@@ -255,7 +261,7 @@ the time (not the date), you can change it easily, in an intializer block:
 
 {% highlight ruby %}
 Grizzled::Rails::Logger.configure do |cfg|
-  cfg.format = '%H:%M:%S'
+  cfg.timeformat = '%H:%M:%S'
 end
 {% endhighlight %}
 
