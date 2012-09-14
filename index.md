@@ -125,15 +125,27 @@ Grizzled::Rails::Logger.configure do |cfg|
 end
 {% endhighlight %}
 
-With that setting, a debug message that normally looks like this:
+With that (erroneous) setting, a debug message that normally looks like this:
 
     [2012/04/12 14:43:22] (DEBUG) 9816 My debug message
 
 will, instead, look like this:
 
-<pre style="color: red">
+    red[2012/04/12 14:43:22] (DEBUG) 9816 My debug message
+
+If what you want is this:
+
+<pre style="color:red">
 [2012/04/12 14:43:22] (DEBUG) 9816 My debug message
 </pre>
+
+use:
+
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.colors[:debug] = Term::ANSIColor.red
+end
+{% endhighlight %}
 
 ## Exception logging
 
@@ -215,7 +227,27 @@ Grizzled::Rails::Logger.configure do |cfg|
 end
 {% endhighlight %}
 
-**NOTE: Exception backtraces emitted via `logger.exception()` are *never* flattened.**
+### Exceptions
+
+Exception backtraces emitted via `logger.exception()` are *never* flattened.
+
+However, since `logger.exception()` is a *Grizzled Rails Logger* extension,
+most components don't use it. With the default configuration, exceptions logged
+through `logger.error()` *are* flattened, which is rather ugly.
+
+The following patterns will match most exceptions, ensuring that they aren't
+flattened in the log output. (They're not part of the default configuration,
+however, because not everyone wants this behavior.)
+
+{% highlight ruby %}
+Grizzled::Rails::Logger.configure do |cfg|
+  cfg.dont_flatten_patterns = [
+    /\.rb:\w+:in\s+`/,
+    /rb:\d+: syntax error/
+  ]
+end
+{% endhighlight %}
+
 
 ## Formatting
 
