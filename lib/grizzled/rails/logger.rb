@@ -113,7 +113,12 @@ Backtrace:
             end
           end
 
-          flatten = options.fetch(:flatten, Configuration.flatten)
+          if Configuration.dont_flatten_error && (severity == ERROR || severity == FATAL)
+            flatten = false
+          else
+            flatten = options.fetch(:flatten, Configuration.flatten)
+          end
+
           if flatten
             flatten_patterns = options.fetch(
               :flatten_patterns, Configuration.flatten_patterns
@@ -154,7 +159,7 @@ Backtrace:
                                          gsub("%P", pid).
                                          gsub("%S", sev).
                                          gsub("%M", message)
-      
+
           if Configuration.colorize
             color = Configuration.colors[SEVERITY_MAP[severity]]
             message = "#{color}#{message}#{Term::ANSIColor.reset}" if color
