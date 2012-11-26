@@ -146,7 +146,7 @@ Backtrace:
             message = flattened_message if flatten
           end
 
-          time = Time.now.strftime(Configuration.timeformat)
+          time = Time.current.strftime(Configuration.timeformat)
           pid = $$.to_s
           sev = SEVERITIES[severity].to_s
 
