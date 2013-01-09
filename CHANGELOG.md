@@ -1,5 +1,15 @@
 # Change Log
 
+Version 0.1.6 (07 Jan, 2013)
+
+- Addressed [Issue #12][]: Extra newlines in unflattened exceptions logged
+  through the `exception()` method.
+- Minor documentation change contributed my Pirogov Evgenij.
+
+[Issue #12]: https://github.com/bmc/grizzled-rails-logger/issues/5
+
+---
+
 Version 0.1.5 (16 June, 2012)
 
 - Changed to work with Rails 3.2.6, while retaining backward compatibility

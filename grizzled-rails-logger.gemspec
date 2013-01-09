@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name             = 'grizzled-rails-logger'
-  s.version          = '0.1.6a1'
+  s.version          = '0.1.6'
   s.date             = '2012-08-13'
   s.summary          = 'A custom Rails 3 logger'
   s.authors          = ['Brian M. Clapper']

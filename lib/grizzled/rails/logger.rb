@@ -73,11 +73,8 @@ module Grizzled # :nodoc:
         end
 
         def exception(message, ex, progname = nil)
-          ex_message = <<-EOM
-#{ex.class}: #{ex.message}
-Backtrace:
-#{ex.backtrace.join("\n")}
-          EOM
+          lines = ["#{ex.class}: #{ex.message}", "Backtrace"] + ex.backtrace
+          ex_message = lines.join("\n")
           if message.nil? || (message.length == 0)
             message = "#{ex_message}"
           else
@@ -154,7 +151,7 @@ Backtrace:
                                          gsub("%P", pid).
                                          gsub("%S", sev).
                                          gsub("%M", message)
-      
+
           if Configuration.colorize
             color = Configuration.colors[SEVERITY_MAP[severity]]
             message = "#{color}#{message}#{Term::ANSIColor.reset}" if color
