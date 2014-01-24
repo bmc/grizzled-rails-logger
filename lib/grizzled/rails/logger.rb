@@ -143,7 +143,7 @@ module Grizzled # :nodoc:
             message = flattened_message if flatten
           end
 
-          time = Time.now.strftime(Configuration.timeformat)
+          time = Time.current.utc.strftime(Configuration.timeformat)
           pid = $$.to_s
           sev = SEVERITIES[severity].to_s
 
