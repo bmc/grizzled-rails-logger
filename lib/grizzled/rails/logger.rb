@@ -21,6 +21,7 @@ module Grizzled # :nodoc:
           :timeformat            => '%Y/%m/%d %H:%M:%S',
           :colorize              => true,
           :flatten               => true,
+          :flatten_delimiter     => '',
           :flatten_patterns      => [
             /.*/
           ],
@@ -122,7 +123,8 @@ module Grizzled # :nodoc:
               flatten_patterns = ['.*']
             end
             flatten = false
-            flattened_message = message.to_s.gsub("\n", '')
+            flatten_delimiter = options.fetch(:flatten_delimiter, Configuration.flatten_delimiter)
+            flattened_message = message.to_s.gsub("\n", flatten_delimiter)
 
             # Flatten the message if it matches the specified pattern...
             flatten_patterns.each do |pattern|
